@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIB Training Library — Career Prep | TIB Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864; --navy-soft:#2C4B7C; --teal:#1F7A8C; --amber:#C65911;
+    --paper:#F7F4EC; --paper-deep:#EFE9DA; --ink:#1B1F23; --slate:#5B6B79; --line:#D9D2C0; --card:#FFFFFF;
+    --stage:#1F3864;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--teal);font-weight:600;}
+  h1,h2,h3{font-family:'Fraunces',serif;color:var(--navy);margin:0;font-weight:600;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+
+  .masthead{border-bottom:1px solid var(--line);padding:1.1rem 6vw;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .brandmark{display:flex;align-items:baseline;gap:0.6rem;}
+  .brandmark .name{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:0.95rem;letter-spacing:0.06em;color:var(--navy);}
+  .brandmark .tag{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--slate);}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:2px;}
+  .back-link:hover{color:var(--amber);border-color:var(--amber);}
+
+  .hero{padding:4.2rem 6vw 2.2rem; max-width:980px;}
+  .hero .stagebar{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:#fff;background:var(--stage);padding:0.3rem 0.65rem;text-transform:uppercase;margin-bottom:1rem;}
+  .hero h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;letter-spacing:-0.01em;margin-top:0.6rem;}
+  .hero .lede{margin-top:1.1rem;font-size:1.1rem;color:var(--slate);max-width:680px;}
+  .hero .standalone{margin-top:0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--slate);}
+
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin:2.2rem 0 0;max-width:980px;background:var(--card);}
+  .facts .f{padding:1.1rem 1.3rem;border-right:1px solid var(--line);}
+  .facts .f:last-child{border-right:none;}
+  .facts .f .num{font-family:'IBM Plex Mono',monospace;font-size:1.25rem;color:var(--navy);font-weight:600;display:block;}
+  .facts .f .lbl{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.07em;}
+
+  section{padding:0 6vw;}
+  .block{max-width:980px;padding:3rem 0 0.5rem;}
+  .block h2{font-size:clamp(1.4rem,2.4vw,1.85rem);}
+  .block > p.intro{color:var(--slate);margin-top:0.8rem;font-size:1.02rem;max-width:720px;}
+
+  .stage-path{margin-top:1.8rem;display:flex;flex-direction:column;gap:0;}
+  .sp{display:grid;grid-template-columns:150px 1fr;border-top:1px solid var(--line);padding:1.2rem 0;gap:0.5rem;}
+  .sp:last-child{border-bottom:1px solid var(--line);}
+  .sp .tag{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--teal);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;}
+  .sp h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.05rem;font-weight:600;margin:0 0 0.35rem;}
+  .sp p{margin:0;color:var(--slate);font-size:0.94rem;}
+
+  .topic-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.8rem;}
+  .topic{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stage);padding:1.1rem 1.2rem;}
+  .topic .code{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--teal);letter-spacing:0.06em;font-weight:600;}
+  .topic h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.02rem;margin:0.35rem 0 0.4rem;font-weight:600;}
+  .topic p{margin:0;color:var(--slate);font-size:0.88rem;}
+
+  .outcomes{margin-top:1.8rem;list-style:none;padding:0;display:grid;gap:0.7rem;max-width:760px;}
+  .outcomes li{padding-left:1.4rem;position:relative;color:var(--ink);font-size:0.98rem;}
+  .outcomes li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:600;}
+
+  .who{margin-top:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:980px;}
+  .who .w{border-top:2px solid var(--stage);padding-top:0.8rem;}
+  .who .w .k{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.07em;}
+  .who .w p{color:var(--slate);margin:0.4rem 0 0;font-size:0.95rem;}
+
+  .cta-band{max-width:980px;margin:3.2rem 0 4rem;background:var(--navy);color:var(--paper);padding:2.4rem 2.6rem;display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;}
+  .cta-band h3{color:#fff;font-size:1.5rem;}
+  .cta-band p{color:#C9D3E0;font-size:0.95rem;margin-top:0.5rem;max-width:420px;}
+  .signin-btn{display:inline-block;text-align:center;background:var(--amber);color:#fff;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;padding:0.9rem 1.5rem;border:1px solid var(--amber);transition:background .2s ease,color .2s ease;white-space:nowrap;}
+  .signin-btn:hover{background:transparent;color:#fff;border-color:#fff;}
+
+  footer{border-top:1px solid var(--line);padding:2rem 6vw 2.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:var(--slate);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;}
+
+  @media (max-width:880px){
+    .facts{grid-template-columns:1fr 1fr;}
+    .facts .f:nth-child(2){border-right:none;}
+    .topic-grid{grid-template-columns:1fr;}
+    .who{grid-template-columns:1fr;}
+    .sp{grid-template-columns:1fr;}
+    .cta-band{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brandmark">
+    <span class="name">TIB SYSTEMS LLC</span>
+    <span class="tag">SAP Security · GRC · Controls</span>
+  </div>
+  <a class="back-link" href="index.html">← All three programmes</a>
+</header>
+
+<div class="hero">
+  <span class="stagebar">Stage 03 · Placement</span>
+  <p class="eyebrow">TRK · 03</p>
+  <h1>TIB Training Library</h1>
+  <p class="lede">Technical readiness doesn't hire itself. This is where judgment and hands-on skill turn into a resume that reads right, an interview you're ready for, and a clear-eyed read on where the SAP GRC job market actually is right now.</p>
+  <p class="standalone">Career Prep Training Library · free account · open reference access at any stage</p>
+
+  <div class="facts">
+    <div class="f"><span class="num">Open</span><span class="lbl">Free registration</span></div>
+    <div class="f"><span class="num">3</span><span class="lbl">Career stages covered</span></div>
+    <div class="f"><span class="num">Live</span><span class="lbl">Market intelligence briefs</span></div>
+    <div class="f"><span class="num">Any</span><span class="lbl">Entry point, any time</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="block">
+    <p class="eyebrow">Background</p>
+    <h2>Why this library exists</h2>
+    <p class="intro">A strong SAP GRC analyst can still lose an interview to a resume that reads generic, or freeze on a follow-up question a hiring manager expected them to have a real answer for. The Training Library exists to close that gap — every document in it is built from actual SAP security, GRC, and controls hiring patterns, not repurposed general career advice, so what you say in an interview matches what the person across the table is actually screening for.</p>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Scope covered</p>
+    <h2>What's in the library</h2>
+    <div class="topic-grid">
+      <div class="topic"><span class="code">RESUME</span><h4>Model Resume &amp; Positioning Framework</h4><p>A realistic, fully worked resume model built around real hiring-manager scoring patterns for SAP GRC roles — what to lead with, what to cut.</p></div>
+      <div class="topic"><span class="code">ONBOARDING</span><h4>First 60 Days Playbook</h4><p>What to actually do in your first two months on the job — how to build credibility fast without overstepping in a new engagement or team.</p></div>
+      <div class="topic"><span class="code">DEEP-DIVE PREP</span><h4>Interview Deep-Dive Narratives</h4><p>Full lived-experience stories behind common resume claims — the obstacles, stakeholders, and real friction — so follow-up questions don't catch you flat.</p></div>
+      <div class="topic"><span class="code">INTERVIEW HEADS</span><h4>Inside the Interviewer's Head</h4><p>What a Recruiter, a Hiring Manager, and a Supervisor are each actually scoring for in the same conversation — and how to answer differently for each.</p></div>
+      <div class="topic"><span class="code">MARKET INTEL</span><h4>Job Market Intelligence Briefs</h4><p>Current demand signals across SAP security, GRC, and controls/audit roles, including the ECC-to-S/4HANA migration wave reshaping the market.</p></div>
+      <div class="topic"><span class="code">ROLE FAMILY</span><h4>Hands-On Working Manager Track</h4><p>A dedicated demand brief and course path for the working-manager role family — hands-on leadership roles that blend configuration and oversight.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Course layout</p>
+    <h2>Organized by where you are, not by chapter number</h2>
+    <p class="intro">Unlike the other two programmes, the library isn't a sequence you work through in order — it's a reference collection organized by career stage, open for you to browse whichever section matches where you are right now.</p>
+    <div class="stage-path">
+      <div class="sp"><span class="tag">Before You Apply</span><div><h4>Resume &amp; Positioning</h4><p>Model resume, positioning framework, and the market intelligence briefs that tell you which skills to lead with right now.</p></div></div>
+      <div class="sp"><span class="tag">During The Search</span><div><h4>Interview Preparation</h4><p>Deep-dive narratives and Inside the Interviewer's Head — the two documents most trainees return to the night before an interview.</p></div></div>
+      <div class="sp"><span class="tag">After You're Hired</span><div><h4>First 60 Days</h4><p>The onboarding playbook for turning a job offer into a strong first impression on a real engagement or team.</p></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Who it's for</p>
+    <h2>Useful at every stage, not just the end</h2>
+    <div class="who">
+      <div class="w"><p class="k">You'll feel at home here if</p><p>You're actively job-hunting and want your resume and interview answers to match what SAP GRC hiring managers are really screening for, or you're a graduate of either other TIB programme moving from training into a real search.</p></div>
+      <div class="w"><p class="k">You don't need to wait for this</p><p>The library is free to register and open at any stage — checking the market intelligence briefs early can shape which chapters of the other two programmes you prioritize first.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">What you'll walk away with</p>
+    <h2>What the library gets you</h2>
+    <ul class="outcomes">
+      <li>A resume that reads the way an SAP GRC hiring manager actually scores one, not a generic template</li>
+      <li>Interview answers backed by real, defensible narrative detail instead of surface-level resume bullets</li>
+      <li>A working sense of which SAP GRC skills and roles are in the highest current demand</li>
+      <li>A concrete first-60-days plan so your first impression on the job matches the one that got you hired</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h3>Ready to start Stage 03?</h3>
+    <p>Free account — register and browse any section, at any point in your journey.</p>
+  </div>
+  <a class="signin-btn" href="https://tib-training-library.vercel.app/">Sign in to Training Library →</a>
+</div>
+
+<footer>
+  <span>© 2026 TIB Systems LLC — Atlanta · Hyderabad · RAK</span>
+  <span>academy@tib-systems.com</span>
+</footer>
+
+</body>
+</html>

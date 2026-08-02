@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Controls Analyst — No-Access Track | TIB Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864; --navy-soft:#2C4B7C; --teal:#1F7A8C; --amber:#C65911;
+    --paper:#F7F4EC; --paper-deep:#EFE9DA; --ink:#1B1F23; --slate:#5B6B79; --line:#D9D2C0; --card:#FFFFFF;
+    --stage:#1F7A8C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--stage);font-weight:600;}
+  h1,h2,h3{font-family:'Fraunces',serif;color:var(--navy);margin:0;font-weight:600;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+
+  .masthead{border-bottom:1px solid var(--line);padding:1.1rem 6vw;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .brandmark{display:flex;align-items:baseline;gap:0.6rem;}
+  .brandmark .name{font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:0.95rem;letter-spacing:0.06em;color:var(--navy);}
+  .brandmark .tag{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;color:var(--slate);}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--teal);text-decoration:none;border-bottom:1px solid var(--teal);padding-bottom:2px;}
+  .back-link:hover{color:var(--amber);border-color:var(--amber);}
+
+  .hero{padding:4.2rem 6vw 2.2rem; max-width:980px;}
+  .hero .stagebar{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:#fff;background:var(--stage);padding:0.3rem 0.65rem;text-transform:uppercase;margin-bottom:1rem;}
+  .hero h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;letter-spacing:-0.01em;margin-top:0.6rem;}
+  .hero .lede{margin-top:1.1rem;font-size:1.1rem;color:var(--slate);max-width:680px;}
+  .hero .standalone{margin-top:0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--slate);}
+
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin:2.2rem 0 0;max-width:980px;background:var(--card);}
+  .facts .f{padding:1.1rem 1.3rem;border-right:1px solid var(--line);}
+  .facts .f:last-child{border-right:none;}
+  .facts .f .num{font-family:'IBM Plex Mono',monospace;font-size:1.35rem;color:var(--navy);font-weight:600;display:block;}
+  .facts .f .lbl{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.07em;}
+
+  section{padding:0 6vw;}
+  .block{max-width:980px;padding:3rem 0 0.5rem;}
+  .block h2{font-size:clamp(1.4rem,2.4vw,1.85rem);}
+  .block > p.intro{color:var(--slate);margin-top:0.8rem;font-size:1.02rem;max-width:720px;}
+
+  .topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem;}
+  .topic{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stage);padding:1.1rem 1.2rem;}
+  .topic .code{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--stage);letter-spacing:0.06em;font-weight:600;}
+  .topic h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.02rem;margin:0.35rem 0 0.4rem;font-weight:600;}
+  .topic p{margin:0;color:var(--slate);font-size:0.88rem;}
+
+  .layout-steps{margin-top:1.8rem;display:flex;flex-direction:column;gap:0;}
+  .lstep{display:grid;grid-template-columns:70px 1fr;border-top:1px solid var(--line);padding:1.1rem 0;}
+  .lstep:last-child{border-bottom:1px solid var(--line);}
+  .lstep .n{font-family:'IBM Plex Mono',monospace;color:var(--stage);font-weight:600;font-size:0.85rem;}
+  .lstep h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.05rem;font-weight:600;margin:0 0 0.35rem;}
+  .lstep p{margin:0;color:var(--slate);font-size:0.94rem;}
+
+  .outcomes{margin-top:1.8rem;list-style:none;padding:0;display:grid;gap:0.7rem;max-width:760px;}
+  .outcomes li{padding-left:1.4rem;position:relative;color:var(--ink);font-size:0.98rem;}
+  .outcomes li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:600;}
+
+  .who{margin-top:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:980px;}
+  .who .w{border-top:2px solid var(--stage);padding-top:0.8rem;}
+  .who .w .k{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--amber);text-transform:uppercase;letter-spacing:0.07em;}
+  .who .w p{color:var(--slate);margin:0.4rem 0 0;font-size:0.95rem;}
+
+  .cta-band{max-width:980px;margin:3.2rem 0 4rem;background:var(--navy);color:var(--paper);padding:2.4rem 2.6rem;display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;}
+  .cta-band h3{color:#fff;font-size:1.5rem;}
+  .cta-band p{color:#C9D3E0;font-size:0.95rem;margin-top:0.5rem;max-width:420px;}
+  .signin-btn{display:inline-block;text-align:center;background:var(--amber);color:#fff;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;padding:0.9rem 1.5rem;border:1px solid var(--amber);transition:background .2s ease,color .2s ease;white-space:nowrap;}
+  .signin-btn:hover{background:transparent;color:#fff;border-color:#fff;}
+
+  footer{border-top:1px solid var(--line);padding:2rem 6vw 2.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:var(--slate);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;}
+
+  @media (max-width:880px){
+    .facts{grid-template-columns:1fr 1fr;}
+    .facts .f:nth-child(2){border-right:none;}
+    .topic-grid{grid-template-columns:1fr;}
+    .who{grid-template-columns:1fr;}
+    .cta-band{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brandmark">
+    <span class="name">TIB SYSTEMS LLC</span>
+    <span class="tag">SAP Security · GRC · Controls</span>
+  </div>
+  <a class="back-link" href="index.html">← All three programmes</a>
+</header>
+
+<div class="hero">
+  <span class="stagebar">Stage 01 · Judgment</span>
+  <p class="eyebrow">TRK · 01</p>
+  <h1>SAP Controls Analyst — No-Access Track</h1>
+  <p class="lede">Learn to read SAP evidence and form a defensible professional judgment about it — before you ever get production system access. This is the entry point most controls, audit, and GRC careers actually start from.</p>
+  <p class="standalone">Standalone judgment-first programme · pairs with SAP Controls Mastery · no SAP login required to begin</p>
+
+  <div class="facts">
+    <div class="f"><span class="num">15</span><span class="lbl">Chapters / domains</span></div>
+    <div class="f"><span class="num">64</span><span class="lbl">Competency checks (CVUs)</span></div>
+    <div class="f"><span class="num">0</span><span class="lbl">SAP access needed</span></div>
+    <div class="f"><span class="num">Self</span><span class="lbl">Paced, evidence-based</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="block">
+    <p class="eyebrow">Background</p>
+    <h2>Why this programme exists</h2>
+    <p class="intro">Almost nobody gets handed the keys to a live SAP system on their first day in controls or audit. What they do get is evidence: a role export, a segregation-of-duties report, an audit log extract, a Fiori catalog listing — and a request to say, in writing, whether it's a problem. That is the actual first-year job. The No-Access Track trains exactly this skill using real captured evidence rather than a simulated SAP screen, so the judgment you build transfers directly to a real review the first time someone hands you a file.</p>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Who it's for</p>
+    <h2>Built for the start of the path</h2>
+    <div class="who">
+      <div class="w"><p class="k">You'll feel at home here if</p><p>You're new to SAP entirely, moving into GRC or IT audit from a general accounting, IT, or compliance background, or preparing for a first-round interview and need to be able to speak fluently about access risk without having touched a live system yet.</p></div>
+      <div class="w"><p class="k">You can start immediately even if</p><p>You've never logged into SAP, don't have a lab or sandbox, and don't yet know what SUIM, PFCG, or a segregation-of-duties conflict even are — the track builds that vocabulary from zero, chapter by chapter.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Scope covered</p>
+    <h2>Fifteen domains, one evidence type at a time</h2>
+    <p class="intro">Each domain below is a chapter. You work through real evidence for that domain — exports, logs, screenshots, reports — and answer scored competency checks that mirror how a reviewer is actually questioned on the job.</p>
+    <div class="topic-grid">
+      <div class="topic"><span class="code">CH 01 · SUIM</span><h4>User Information System</h4><p>Reading user, role, and authorization reports without configuring anything yourself.</p></div>
+      <div class="topic"><span class="code">CH 02 · PFCG</span><h4>Profile Generator</h4><p>Understanding how roles are actually built, so you can recognize a badly built one on sight.</p></div>
+      <div class="topic"><span class="code">CH 03 · SOD</span><h4>Segregation of Duties</h4><p>Spotting conflicting access combinations from role and user export evidence.</p></div>
+      <div class="topic"><span class="code">CH 04 · FIORI</span><h4>Fiori App &amp; Catalog Security</h4><p>Reviewing app assignments and catalog-to-role mapping for over-exposure.</p></div>
+      <div class="topic"><span class="code">CH 05 · EAM</span><h4>Emergency Access Management</h4><p>Evaluating firefighter ID usage logs and after-the-fact review evidence.</p></div>
+      <div class="topic"><span class="code">CH 06 · ARQ</span><h4>Access Request Management</h4><p>Reviewing access-request workflow evidence for proper approval and business justification.</p></div>
+      <div class="topic"><span class="code">CH 07 · UAR</span><h4>User Access Review</h4><p>Evaluating periodic access recertification evidence for completeness and follow-through.</p></div>
+      <div class="topic"><span class="code">CH 08 · RAR</span><h4>Risk Analysis &amp; Remediation</h4><p>Reading GRC risk analysis reports and the mitigation documentation behind them.</p></div>
+      <div class="topic"><span class="code">CH 09 · PCCM</span><h4>Process &amp; Continuous Control Monitoring</h4><p>Reviewing automated control monitoring output for exceptions that actually matter.</p></div>
+      <div class="topic"><span class="code">CH 10 · TLOG</span><h4>Table Logging</h4><p>Reading change-document and table-log evidence for unauthorized or unusual changes.</p></div>
+      <div class="topic"><span class="code">CH 11 · STMS</span><h4>Transport Management System</h4><p>Reviewing transport logs for change-control compliance across the landscape.</p></div>
+      <div class="topic"><span class="code">CH 12 · ITGC</span><h4>IT General Controls</h4><p>Applying the access / change / operations framework across every evidence type above.</p></div>
+      <div class="topic"><span class="code">CH 13 · SM59</span><h4>RFC Connections</h4><p>Evaluating interface and connection security evidence between systems.</p></div>
+      <div class="topic"><span class="code">CH 14 · SECPARAM</span><h4>Security Parameters</h4><p>Reviewing system security parameter settings against policy expectations.</p></div>
+      <div class="topic"><span class="code">CH 15 · SM20</span><h4>Security Audit Log</h4><p>Reading audit log evidence for suspicious or unauthorized activity.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Course layout</p>
+    <h2>How the track is structured</h2>
+    <div class="layout-steps">
+      <div class="lstep"><div class="n">01</div><div><h4>Fifteen chapters, one domain each</h4><p>Every chapter opens with a short explainer of what the domain is and why it matters to a controls review, then moves straight into real evidence.</p></div></div>
+      <div class="lstep"><div class="n">02</div><div><h4>Sixty-four Control Verification Units (CVUs)</h4><p>Scored checkpoints distributed across the chapters. Each CVU presents a piece of evidence and asks you to form and defend a judgment about it — the same move a reviewer makes on a real engagement.</p></div></div>
+      <div class="lstep"><div class="n">03</div><div><h4>Downloadable evidence packs</h4><p>Selected CVUs include an evidence-pack spreadsheet you can open and work through directly, the way you'd receive a file from a client or engagement team.</p></div></div>
+      <div class="lstep"><div class="n">04</div><div><h4>Progress tracked automatically</h4><p>Your console remembers exactly where you left off and what you've completed, so you can move at your own pace without losing your place.</p></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">What you'll walk away with</p>
+    <h2>By the end of the track</h2>
+    <ul class="outcomes">
+      <li>You can look at a role export, a SoD conflict report, or an audit log and form a professional judgment about it — not just describe what you're looking at</li>
+      <li>You can name and explain all fifteen core SAP controls domains in plain language, without needing a system in front of you</li>
+      <li>You're ready for the judgment-based questions that come up in almost every first-round SAP controls or audit interview</li>
+      <li>You have the exact foundation SAP Controls Mastery is built to extend into hands-on configuration skill</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h3>Ready to start Stage 01?</h3>
+    <p>No SAP access, no prior experience required — just sign in and begin with Chapter 1.</p>
+  </div>
+  <a class="signin-btn" href="https://controls-analyst-no-access.vercel.app/">Sign in to No-Access Track →</a>
+</div>
+
+<footer>
+  <span>© 2026 TIB Systems LLC — Atlanta · Hyderabad · RAK</span>
+  <span>academy@tib-systems.com</span>
+</footer>
+
+</body>
+</html>

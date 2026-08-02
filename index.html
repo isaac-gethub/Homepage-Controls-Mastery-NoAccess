@@ -11,12 +11,12 @@
   :root{
     --navy:#1F3864;
     --navy-soft:#2C4B7C;
-    --teal:#1F7A8C;
+    --teal:#136575;
     --amber:#C65911;
     --paper:#F7F4EC;
     --paper-deep:#EFE9DA;
     --ink:#1B1F23;
-    --slate:#5B6B79;
+    --slate:#3E4A54;
     --line:#D9D2C0;
     --card:#FFFFFF;
     --radius:2px;
@@ -69,21 +69,24 @@
   }
   .brandmark .name{
     font-family:'IBM Plex Mono', monospace;
-    font-weight:600;
-    font-size:0.95rem;
-    letter-spacing:0.06em;
+    font-weight:700;
+    font-size:1.2rem;
+    letter-spacing:0.04em;
     color:var(--navy);
   }
   .brandmark .tag{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
+    font-size:0.88rem;
+    font-weight:600;
     color:var(--slate);
   }
   .masthead-meta{
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    color:var(--slate);
+    font-size:0.84rem;
+    color:var(--navy);
+    font-weight:600;
     text-align:right;
+    line-height:1.5;
   }
 
   /* ===== Hero / cover sheet ===== */
@@ -154,13 +157,14 @@
     display:flex;
     align-items:center;
     gap:0.5rem;
-    padding:0.35rem 0.75rem;
-    border:1px solid var(--line);
-    background:var(--card);
-    color:var(--navy);
+    padding:0.4rem 0.85rem;
+    border:1px solid var(--navy);
+    background:var(--navy);
+    color:#FFFFFF;
+    font-weight:700;
     white-space:nowrap;
   }
-  .flow .arrow{color:var(--amber); font-size:0.9rem;}
+  .flow .arrow{color:var(--amber); font-size:1rem; font-weight:700;}
 
   /* ===== Register entries ===== */
   .register{
@@ -202,12 +206,15 @@
     border-right:1px solid var(--line);
   }
   .entry .stage-label{
+    display:inline-block;
     font-family:'IBM Plex Mono', monospace;
     font-size:0.68rem;
-    letter-spacing:0.12em;
+    letter-spacing:0.1em;
     text-transform:uppercase;
-    color:var(--amber);
-    font-weight:600;
+    background:var(--amber);
+    color:#FFFFFF;
+    font-weight:700;
+    padding:0.25rem 0.6rem;
   }
   .entry h3{
     font-size:1.55rem;
@@ -304,11 +311,15 @@
     padding-top:0.9rem;
   }
   .rationale .col .k{
+    display:inline-block;
     font-family:'IBM Plex Mono', monospace;
-    font-size:0.72rem;
-    color:var(--amber);
+    font-size:0.7rem;
+    background:var(--amber);
+    color:#FFFFFF;
+    font-weight:700;
     text-transform:uppercase;
-    letter-spacing:0.08em;
+    letter-spacing:0.06em;
+    padding:0.25rem 0.6rem;
   }
   .rationale .col h4{
     font-family:'Fraunces', serif;
@@ -356,12 +367,12 @@
   .guide .pick a:hover{border-color:var(--amber);}
 
   /* ===== Pricing ===== */
-  .pricing{
-    max-width:1080px;
+  .pricing-stack{
+    max-width:720px;
     padding:1rem 0 3.5rem;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:1.3rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
   }
   .price-card{
     background:var(--card);
@@ -369,17 +380,49 @@
     padding:1.9rem 2rem;
     display:flex;
     flex-direction:column;
+    width:100%;
   }
-  .price-card.cohort{border-top:3px solid var(--amber);}
-  .price-card.selfpaced{border-top:3px solid var(--teal);}
+  .price-card.base{border-top:4px solid var(--navy);}
+  .price-card.addon{
+    border-top:3px solid var(--amber);
+    border-style:dashed;
+    border-color:var(--amber);
+    max-width:560px;
+    padding:1.5rem 1.8rem;
+    background:var(--paper-deep);
+  }
+  .addon-connector{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    margin:0.9rem 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--slate);
+    font-weight:600;
+  }
+  .addon-connector .plus{
+    width:28px; height:28px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    font-weight:700;
+  }
   .price-card .ptag{
     font-family:'IBM Plex Mono', monospace;
     font-size:0.7rem;
     letter-spacing:0.1em;
     text-transform:uppercase;
     color:var(--slate);
+    font-weight:600;
   }
-  .price-card h3{font-size:1.35rem; margin-top:0.4rem;}
+  .addon .ptag{display:inline-block; background:var(--amber); color:#fff; padding:0.22rem 0.55rem; letter-spacing:0.06em;}
+  .price-card h3{font-size:1.35rem; margin-top:0.5rem;}
+  .price-card.addon h3{font-size:1.15rem;}
   .price-card .amount{
     font-family:'IBM Plex Mono', monospace;
     font-size:2.1rem;
@@ -387,6 +430,7 @@
     font-weight:600;
     margin-top:0.7rem;
   }
+  .price-card.addon .amount{font-size:1.6rem;}
   .price-card .amount span{font-size:0.9rem; color:var(--slate); font-weight:400;}
   .price-card ul{
     list-style:none;
@@ -416,7 +460,9 @@
     padding:0.75rem 1rem;
     border:1px solid var(--amber);
   }
+  .price-card.base .enroll-btn{background:var(--navy); border-color:var(--navy);}
   .price-card .enroll-btn:hover{background:transparent; color:var(--amber);}
+  .price-card.base .enroll-btn:hover{color:var(--navy);}
 
   footer{
     border-top:1px solid var(--line);
@@ -446,7 +492,6 @@
     .doc-control{grid-template-columns:1fr 1fr;}
     .rationale{grid-template-columns:1fr;}
     .guide{grid-template-columns:1fr;}
-    .pricing{grid-template-columns:1fr;}
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -611,14 +656,14 @@
 <section id="pricing">
   <div class="section-head">
     <p class="eyebrow">Programme investment</p>
-    <h2>Two ways to enrol</h2>
-    <p>Both paths cover the same core curriculum — the difference is pace and format. Pick self-paced with full SAP Server access, or a guided tutor-led cohort that includes job placement support.</p>
+    <h2>One base programme, one optional add-on</h2>
+    <p>Every trainee starts with the self-paced bundle below — that's the full curriculum, with live SAP Server access. If you'd rather not go it entirely alone, add weekly live-instructor sessions on top: work through the self-paced material and lab exercises during the week, then join a 4-hour Saturday session for open Q&A and live demos of any SAP or controls process.</p>
   </div>
 
-  <div class="pricing">
-    <div class="price-card selfpaced">
-      <p class="ptag">Self-paced · TRK 01 + TRK 02</p>
-      <h3>No-Access Track + Mastery Console</h3>
+  <div class="pricing-stack">
+    <div class="price-card base">
+      <p class="ptag">Base programme · TRK 01 + TRK 02</p>
+      <h3>Self-Paced Bundle — No-Access Track + Mastery Console</h3>
       <p class="amount">$599 <span>one-time, both courses</span></p>
       <ul>
         <li>No-Access Track — judgment-first, 15 chapters, 64 competency checks</li>
@@ -629,24 +674,28 @@
       <a class="enroll-btn" href="#" data-checkout="PLACEHOLDER-CHECKOUT-A">Enroll — Self-Paced Bundle →</a>
     </div>
 
-    <div class="price-card cohort">
-      <p class="ptag">Tutor-led cohort · 12 weeks</p>
-      <h3>Tutor-Led Cohort (Saturdays)</h3>
-      <p class="amount">$600 <span>one-time, 12-week cohort</span></p>
+    <div class="addon-connector"><span class="plus">+</span> optional add-on, on top of the bundle above</div>
+
+    <div class="price-card addon">
+      <p class="ptag">Add-on · Live instructor sessions</p>
+      <h3>Weekly Live Sessions (Saturdays)</h3>
+      <p class="amount">$600 <span>add-on, 12 weeks of Saturday sessions</span></p>
       <ul>
-        <li>3 months (12 weeks), 4 hours every Saturday with a live tutor</li>
-        <li>Same core SAP Controls & Compliance curriculum, guided pace</li>
+        <li>Not a separate course — a companion to the self-paced bundle above</li>
+        <li>3 months (12 weeks), 4 hours every Saturday with a live instructor</li>
+        <li>Bring questions from the week's self-paced study and lab practice for open Q&A</li>
+        <li>Instructor demos any SAP or controls process the group wants to see live</li>
+        <li>Built for trainees who can't attend daily classes — study during the week, get live support on the weekend</li>
         <li>Includes TIB Training Library — job placement assistance</li>
-        <li>Best fit if you learn better with a set schedule and live instruction</li>
       </ul>
-      <a class="enroll-btn" href="#" data-checkout="PLACEHOLDER-CHECKOUT-B">Enroll — Tutor-Led Cohort →</a>
+      <a class="enroll-btn" href="#" data-checkout="PLACEHOLDER-CHECKOUT-B">Add Weekly Live Sessions →</a>
     </div>
   </div>
 </section>
 
 <footer>
   <span>© 2026 TIB Systems LLC — Atlanta · Hyderabad · RAK</span>
-  <span>All three programmes require separate enrolment · academy@tib-systems.com</span>
+  <span>Self-paced bundle required · live sessions available as an add-on · academy@tib-systems.com</span>
 </footer>
 
 <script>

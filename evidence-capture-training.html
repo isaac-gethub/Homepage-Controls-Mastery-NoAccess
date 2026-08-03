@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAP Controls Consultant — Hands-On Course | TIB Systems</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864; --navy-soft:#2C4B7C; --teal:#136575; --amber:#C65911;
+    --paper:#F7F4EC; --paper-deep:#EFE9DA; --ink:#1B1F23; --slate:#3E4A54; --line:#D9D2C0; --card:#FFFFFF;
+    --stage:#1F7A8C;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'IBM Plex Sans',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--stage);font-weight:600;}
+  h1,h2,h3{font-family:'Fraunces',serif;color:var(--navy);margin:0;font-weight:600;}
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{outline:3px solid var(--amber); outline-offset:3px;}
+
+  .masthead{border-bottom:1px solid var(--line);padding:1.1rem 6vw;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .brandmark{display:flex;align-items:baseline;gap:0.6rem;}
+  .brandmark .name{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:1.2rem;letter-spacing:0.04em;color:var(--navy);}
+  .brandmark .tag{font-family:'IBM Plex Mono',monospace;font-size:0.88rem;color:var(--slate);font-weight:600;}
+  .back-link{font-family:'IBM Plex Mono',monospace;font-size:0.85rem;color:var(--teal);font-weight:600;text-decoration:none;border-bottom:2px solid var(--teal);padding-bottom:2px;}
+  .back-link:hover{color:var(--amber);border-color:var(--amber);}
+
+  .hero{padding:4.2rem 6vw 2.2rem; max-width:980px;}
+  .hero .stagebar{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.7rem;letter-spacing:0.1em;color:#fff;background:var(--stage);padding:0.3rem 0.65rem;text-transform:uppercase;margin-bottom:1rem;}
+  .hero h1{font-size:clamp(2rem,4vw,3.1rem);line-height:1.1;letter-spacing:-0.01em;margin-top:0.6rem;}
+  .hero .lede{margin-top:1.1rem;font-size:1.1rem;color:var(--slate);max-width:680px;}
+  .hero .standalone{margin-top:0.9rem;font-family:'IBM Plex Mono',monospace;font-size:0.76rem;color:var(--slate);font-weight:600;}
+
+  .facts{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);margin:2.2rem 0 0;max-width:980px;background:var(--card);}
+  .facts .f{padding:1.1rem 1.3rem;border-right:1px solid var(--line);}
+  .facts .f:last-child{border-right:none;}
+  .facts .f .num{font-family:'IBM Plex Mono',monospace;font-size:1.35rem;color:var(--navy);font-weight:600;display:block;}
+  .facts .f .lbl{font-family:'IBM Plex Mono',monospace;font-size:0.66rem;color:var(--slate);text-transform:uppercase;letter-spacing:0.07em;}
+
+  section{padding:0 6vw;}
+  .block{max-width:980px;padding:3rem 0 0.5rem;}
+  .block h2{font-size:clamp(1.4rem,2.4vw,1.85rem);}
+  .block > p.intro{color:var(--slate);margin-top:0.8rem;font-size:1.02rem;max-width:720px;}
+
+  .link-card{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stage);padding:1.2rem 1.4rem;margin-top:1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+  .link-card p{margin:0;color:var(--slate);font-size:0.94rem;}
+  .link-card a{font-family:'IBM Plex Mono',monospace;font-size:0.8rem;font-weight:600;color:var(--stage);text-decoration:none;white-space:nowrap;border-bottom:1px solid var(--stage);}
+  .link-card a:hover{color:var(--amber);border-color:var(--amber);}
+
+  .topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.8rem;}
+  .topic{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--stage);padding:1.1rem 1.2rem;}
+  .topic .code{font-family:'IBM Plex Mono',monospace;font-size:0.7rem;color:var(--stage);letter-spacing:0.06em;font-weight:600;}
+  .topic h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.02rem;margin:0.35rem 0 0.4rem;font-weight:600;}
+  .topic p{margin:0;color:var(--slate);font-size:0.88rem;}
+
+  .layout-steps{margin-top:1.8rem;display:flex;flex-direction:column;gap:0;}
+  .lstep{display:grid;grid-template-columns:70px 1fr;border-top:1px solid var(--line);padding:1.1rem 0;}
+  .lstep:last-child{border-bottom:1px solid var(--line);}
+  .lstep .n{font-family:'IBM Plex Mono',monospace;color:var(--stage);font-weight:600;font-size:0.85rem;}
+  .lstep h4{font-family:'Fraunces',serif;color:var(--navy);font-size:1.05rem;font-weight:600;margin:0 0 0.35rem;}
+  .lstep p{margin:0;color:var(--slate);font-size:0.94rem;}
+
+  .evidence-types{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.8rem;}
+  .etype{padding:1.2rem 1.3rem;border:1px solid var(--line);}
+  .etype.file{border-left:4px solid #1B6B3C;}
+  .etype.shot{border-left:4px solid var(--slate);background:var(--paper-deep);}
+  .etype .tag{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.66rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;padding:0.2rem 0.5rem;color:#fff;}
+  .etype.file .tag{background:#1B6B3C;}
+  .etype.shot .tag{background:var(--slate);}
+  .etype p{margin:0.6rem 0 0;color:var(--ink);font-size:0.92rem;}
+
+  .outcomes{margin-top:1.8rem;list-style:none;padding:0;display:grid;gap:0.7rem;max-width:760px;}
+  .outcomes li{padding-left:1.4rem;position:relative;color:var(--ink);font-size:0.98rem;}
+  .outcomes li::before{content:"✓";position:absolute;left:0;color:var(--teal);font-weight:600;}
+
+  .who{margin-top:1.8rem;display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;max-width:980px;}
+  .who .w{border-top:2px solid var(--stage);padding-top:0.8rem;}
+  .who .w .k{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:0.68rem;background:var(--amber);color:#FFFFFF;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;padding:0.25rem 0.55rem;}
+  .who .w p{color:var(--slate);margin:0.4rem 0 0;font-size:0.95rem;}
+
+  .cta-band{max-width:980px;margin:3.2rem 0 4rem;background:var(--navy);color:var(--paper);padding:2.4rem 2.6rem;display:flex;align-items:center;justify-content:space-between;gap:1.6rem;flex-wrap:wrap;}
+  .cta-band h3{color:#fff;font-size:1.5rem;}
+  .cta-band p{color:#C9D3E0;font-size:0.95rem;margin-top:0.5rem;max-width:420px;}
+  .signin-btn{display:inline-block;text-align:center;background:var(--amber);color:#fff;text-decoration:none;font-family:'IBM Plex Mono',monospace;font-size:0.82rem;font-weight:600;letter-spacing:0.04em;padding:0.9rem 1.5rem;border:1px solid var(--amber);transition:background .2s ease,color .2s ease;white-space:nowrap;}
+  .signin-btn:hover{background:transparent;color:#fff;border-color:#fff;}
+
+  footer{border-top:1px solid var(--line);padding:2rem 6vw 2.6rem;font-family:'IBM Plex Mono',monospace;font-size:0.74rem;color:var(--slate);display:flex;justify-content:space-between;flex-wrap:wrap;gap:0.6rem;}
+
+  @media (max-width:880px){
+    .facts{grid-template-columns:1fr 1fr;}
+    .facts .f:nth-child(2n){border-right:none;}
+    .topic-grid{grid-template-columns:1fr;}
+    .evidence-types{grid-template-columns:1fr;}
+    .who{grid-template-columns:1fr;}
+    .cta-band{flex-direction:column;align-items:flex-start;}
+  }
+
+  @media (max-width:600px){
+    .masthead{padding:1rem 5.5vw;flex-direction:column;align-items:flex-start;gap:0.6rem;}
+    .hero{padding:2.6rem 5.5vw 1.6rem;}
+    .hero h1{font-size:clamp(1.6rem,8vw,3.1rem);line-height:1.15;}
+    .hero .lede{font-size:1rem;}
+    section{padding:0 5.5vw;}
+    .block{padding:2.2rem 0 0.4rem;}
+    .facts .f{padding:0.9rem 1rem;}
+    .facts .f .num{font-size:1.1rem;}
+    .lstep{grid-template-columns:1fr;gap:0.3rem;}
+    .lstep .n{font-size:0.78rem;}
+    .link-card{flex-direction:column;align-items:flex-start;}
+    .cta-band{padding:1.6rem 1.5rem;}
+    .signin-btn{width:100%;white-space:normal;}
+    footer{flex-direction:column;align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brandmark">
+    <span class="name">TIB SYSTEMS LLC</span>
+    <span class="tag">SAP Security · GRC · Controls</span>
+  </div>
+  <a class="back-link" href="index.html">← All four programmes</a>
+</header>
+
+<div class="hero">
+  <span class="stagebar">Stage 02 · Capture</span>
+  <p class="eyebrow">TRK · 02</p>
+  <h1>SAP Controls Consultant — Hands-On Course</h1>
+  <p class="lede">No-Access Track taught you to judge evidence someone else handed you. This is where you learn to go get it yourself — the same fifteen domains and sixty-four items, but now you're the one inside SAP and SAP GRC producing them, screen by screen.</p>
+  <p class="standalone">Evidence Capture Training · direct one-to-one companion to No-Access Track · SAP GRC sandbox access required</p>
+
+  <div class="facts">
+    <div class="f"><span class="num">64</span><span class="lbl">Items matched to No-Access Track</span></div>
+    <div class="f"><span class="num">15</span><span class="lbl">SAP &amp; GRC domains</span></div>
+    <div class="f"><span class="num">2</span><span class="lbl">Evidence types taught</span></div>
+    <div class="f"><span class="num">Free</span><span class="lbl">Included in the self-paced bundle</span></div>
+  </div>
+</div>
+
+<section>
+  <div class="block">
+    <p class="eyebrow">Background</p>
+    <h2>Why this programme exists</h2>
+    <p class="intro">No-Access Track is deliberately built so you never have to touch a live SAP system — you're handed the evidence and asked to judge it. That's the right way to build judgment fast. But it leaves a real gap: it never teaches you where a SUIM extract, a GRC risk analysis, or an audit log actually comes from, or how someone produces it in the first place. This course closes that gap directly. Same fifteen domains. Same sixty-four items. This time, you're the one navigating to the screen, running the report, and deciding how the evidence gets saved.</p>
+    <div class="link-card">
+      <p>This course is a direct one-to-one companion to <strong>SAP Controls Analyst — No-Access Track</strong> — every item here matches an item you already judged there.</p>
+      <a href="no-access-track.html">View No-Access Track →</a>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">The core skill</p>
+    <h2>Two kinds of evidence, and knowing which is which</h2>
+    <p class="intro">Most training glosses over this. A real controls analyst has to know, screen by screen, whether what's in front of them is something you export as a working file, or something where the screenshot itself is the entire piece of evidence. Getting this wrong either wastes time hunting for an export button that doesn't exist, or hands in a screenshot when a real file was expected.</p>
+    <div class="evidence-types">
+      <div class="etype file">
+        <span class="tag">Export as file</span>
+        <p>The screen shows a list or report — a SUIM extract, a GRC risk analysis, an audit log query. You run it, export it (Excel/PDF), and the exported file is the evidence a reviewer actually works from.</p>
+      </div>
+      <div class="etype shot">
+        <span class="tag">Screenshot only</span>
+        <p>A configuration or display screen with nothing to export — a PFCG authorization tab, an RZ11 parameter, an SM59 destination. The screenshot itself is the complete, final evidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Who it's for</p>
+    <h2>Built for the step right after judgment</h2>
+    <div class="who">
+      <div class="w"><p class="k">You'll feel at home here if</p><p>You've completed (or are partway through) No-Access Track and can already recognize a control exception — you just haven't produced the evidence yourself yet. Also a strong fit if you're comfortable with SAP navigation basics and want to build real screen-level fluency before Mastery Console's live labs.</p></div>
+      <div class="w"><p class="k">What you need to start</p><p>Access to an SAP GRC sandbox — the same access No-Access Track deliberately doesn't require. If you don't have one yet, this is the point in the sequence where getting one becomes worth it.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Scope covered</p>
+    <h2>The same fifteen domains — now you produce them</h2>
+    <p class="intro">Every domain below matches a chapter in No-Access Track exactly. Where that track had you read a SUIM extract, this course has you navigate to SUIM, run it, and export it yourself.</p>
+    <div class="topic-grid">
+      <div class="topic"><span class="code">01 · SUIM</span><h4>User Information System</h4><p>Navigating and exporting user, role, and authorization reports.</p></div>
+      <div class="topic"><span class="code">02 · PFCG</span><h4>Profile Generator</h4><p>Building and displaying roles, capturing authorization tabs correctly.</p></div>
+      <div class="topic"><span class="code">03 · SOD</span><h4>Segregation of Duties</h4><p>Running GRC risk analysis and SU24/SU25 checks, and exporting the results.</p></div>
+      <div class="topic"><span class="code">04 · FIORI</span><h4>Fiori App &amp; Catalog Security</h4><p>Navigating catalog configuration and target mapping screens.</p></div>
+      <div class="topic"><span class="code">05 · EAM</span><h4>Emergency Access Management</h4><p>Producing firefighter activation and session logs from GRC EAM.</p></div>
+      <div class="topic"><span class="code">06 · ARQ</span><h4>Access Request Management</h4><p>Navigating request status, approval history, and aging reports.</p></div>
+      <div class="topic"><span class="code">07 · UAR</span><h4>User Access Review</h4><p>Producing campaign decision history and population evidence.</p></div>
+      <div class="topic"><span class="code">08 · RAR</span><h4>Risk Analysis &amp; Remediation</h4><p>Running remediation tracking and What-If simulation reports.</p></div>
+      <div class="topic"><span class="code">09 · PCCM</span><h4>Process &amp; Continuous Control Monitoring</h4><p>Locating and screenshotting control-testing and monitoring evidence.</p></div>
+      <div class="topic"><span class="code">10 · TLOG</span><h4>Table Logging</h4><p>Producing table-change history and technical-settings evidence.</p></div>
+      <div class="topic"><span class="code">11 · STMS</span><h4>Transport Management System</h4><p>Navigating import queues and transport ownership evidence.</p></div>
+      <div class="topic"><span class="code">12 · ITGC</span><h4>IT General Controls</h4><p>Producing batch-job schedule, execution, and change evidence.</p></div>
+      <div class="topic"><span class="code">13 · SM59</span><h4>RFC Connections</h4><p>Navigating destination configuration and trust relationship screens.</p></div>
+      <div class="topic"><span class="code">14 · SECPARAM</span><h4>Security Parameters</h4><p>Producing profile-parameter evidence from RZ11.</p></div>
+      <div class="topic"><span class="code">15 · SM20</span><h4>Security Audit Log</h4><p>Running and exporting filtered audit-log evidence.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">Course layout</p>
+    <h2>A guided walkthrough, not just a task list</h2>
+    <div class="layout-steps">
+      <div class="lstep"><div class="n">01</div><div><h4>Sixty-four items, one screen sequence each</h4><p>Every item names the SAP or GRC tool, tells you exactly what the evidence is supposed to show, and gives numbered navigation steps to get there — not a vague pointer to "check SUIM."</p></div></div>
+      <div class="lstep"><div class="n">02</div><div><h4>Explicit evidence-type labeling</h4><p>Each item is marked "export as file" or "screenshot only" before you start, so you're never guessing which one applies or hunting for a button that isn't there.</p></div></div>
+      <div class="lstep"><div class="n">03</div><div><h4>A companion navigation guide</h4><p>A full step-by-step capture guide ships alongside the course — the same document used to build this course's own content — for offline reference while you're in the sandbox.</p></div></div>
+      <div class="lstep"><div class="n">04</div><div><h4>File naming and progress tracking</h4><p>A consistent naming convention across all 64 items, with progress tracked automatically so you always know what's left.</p></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <p class="eyebrow">What you'll walk away with</p>
+    <h2>By the end of the course</h2>
+    <ul class="outcomes">
+      <li>You can navigate SAP and SAP GRC to locate and produce any of the 64 evidence items you previously only judged</li>
+      <li>You know, on sight, whether a screen is an exportable report or a screenshot-only configuration display</li>
+      <li>You've built real, transferable SAP navigation fluency — not simulated clicks, actual transaction codes and menu paths</li>
+      <li>You're ready for Mastery Console's live labs, having already done the screen-level groundwork this course covers</li>
+    </ul>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div>
+    <h3>Ready to start Stage 02?</h3>
+    <p>Included free with the self-paced bundle — sign in and start matching evidence to No-Access Track item 1.</p>
+  </div>
+  <a class="signin-btn" href="https://no-access-sap-screen-capture.vercel.app/">Sign in to Evidence Capture Training →</a>
+</div>
+
+<footer>
+  <span>© 2026 TIB Systems LLC — Atlanta · Hyderabad · RAK</span>
+  <span>academy@tib-systems.com</span>
+</footer>
+
+</body>
+</html>

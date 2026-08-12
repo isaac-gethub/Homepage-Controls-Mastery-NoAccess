@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIB Systems — SAP Controls & Compliance Training Register</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1F3864;
+    --navy-soft:#2C4B7C;
+    --teal:#136575;
+    --amber:#C65911;
+    --paper:#F7F4EC;
+    --paper-deep:#EFE9DA;
+    --ink:#1B1F23;
+    --slate:#3E4A54;
+    --line:#D9D2C0;
+    --card:#FFFFFF;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    margin:0;
+    font-weight:600;
+  }
+  a{color:inherit;}
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--amber);
+    outline-offset:3px;
+  }
+  img{max-width:100%;}
+
+  .masthead{
+    border-bottom:1px solid var(--line);
+    padding:1.1rem 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+  }
+  .brandmark{
+    display:flex;
+    align-items:baseline;
+    gap:0.6rem;
+  }
+  .brandmark .name{
+    font-family:'IBM Plex Mono', monospace;
+    font-weight:700;
+    font-size:1.2rem;
+    letter-spacing:0.04em;
+    color:var(--navy);
+  }
+  .brandmark .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.88rem;
+    font-weight:600;
+    color:var(--slate);
+  }
+  .masthead-right{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:0.35rem;
+  }
+  .masthead-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.84rem;
+    color:var(--navy);
+    font-weight:600;
+    text-align:right;
+    line-height:1.5;
+  }
+
+  .hero-register-wrap{
+    max-width:1400px;
+  }
+  .hrw-main{min-width:0;}
+
+  .cover{
+    padding:3rem 6vw 2.4rem;
+  }
+  .cover h1{
+    font-size:clamp(2rem, 4vw, 3.1rem);
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin-top:0.8rem;
+  }
+  .cover .lede{
+    margin-top:1rem;
+    font-size:1.08rem;
+    color:var(--slate);
+    max-width:660px;
+  }
+  .roles-strip{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:0.5rem 0.6rem;
+    margin-top:1.2rem;
+    max-width:820px;
+  }
+  .roles-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--slate);
+    margin-right:0.15rem;
+  }
+  .role-pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--navy);
+    border:1px solid var(--navy);
+    padding:0.28rem 0.65rem;
+    background:#fff;
+    white-space:nowrap;
+  }
+  .doc-control{
+    margin-top:1.8rem;
+    border:1px solid var(--line);
+    border-left:3px solid var(--amber);
+    background:var(--card);
+    padding:1rem 1.4rem;
+    display:grid;
+    grid-template-columns:repeat(3, minmax(140px,1fr));
+    gap:1rem 2rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--slate);
+    max-width:760px;
+  }
+  .doc-control dt{
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:0.66rem;
+    color:var(--teal);
+    margin-bottom:0.25rem;
+  }
+  .doc-control dd{margin:0;color:var(--ink);}
+
+  section{padding:0 6vw;}
+  .section-head{
+    max-width:720px;
+    padding:3.4rem 0 1.6rem;
+  }
+  .section-head h2{
+    font-size:clamp(1.5rem, 2.6vw, 2rem);
+    margin-top:0.5rem;
+  }
+  .section-head p{color:var(--slate); margin-top:0.8rem; font-size:1.02rem;}
+
+  .flow{
+    display:flex;
+    align-items:center;
+    gap:0.6rem;
+    margin:0 0 2.2rem;
+    max-width:960px;
+    flex-wrap:wrap;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+  }
+  .flow .stage{
+    display:flex;
+    align-items:center;
+    gap:0.5rem;
+    padding:0.4rem 0.85rem;
+    border:1px solid var(--navy);
+    background:var(--navy);
+    color:#FFFFFF;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .flow .arrow{color:var(--amber); font-size:1rem; font-weight:700;}
+
+  .hero-flow{margin:1.6rem 0 1.1rem;}
+
+  .hero-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0.85rem;
+    margin-top:0.2rem;
+  }
+  .hero-card{
+    display:flex;
+    flex-direction:column;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:3px solid var(--amber);
+    padding:0.95rem 1.05rem 1.1rem;
+    text-decoration:none;
+    transition:border-color .2s ease, transform .15s ease;
+  }
+  .hero-card:hover{border-top-color:var(--teal); transform:translateY(-2px);}
+  .hero-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    letter-spacing:0.07em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:700;
+  }
+  .hero-card h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    font-size:1.03rem;
+    line-height:1.22;
+    margin:0.45rem 0 0.4rem;
+    font-weight:600;
+  }
+  .hero-card p{
+    font-size:0.83rem;
+    color:var(--slate);
+    margin:0;
+    line-height:1.42;
+    flex-grow:1;
+  }
+  .hero-card .go{
+    margin-top:0.6rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--amber);
+  }
+
+  .register{
+    padding-bottom:1rem;
+    display:flex;
+    flex-direction:column;
+    gap:1.1rem;
+    max-width:1080px;
+  }
+  .entry{
+    background:var(--card);
+    border:1px solid var(--line);
+    display:grid;
+    grid-template-columns:64px 1fr 220px;
+    gap:0;
+  }
+  .entry .code-col{
+    background:var(--navy);
+    color:var(--paper);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top:1.6rem;
+    letter-spacing:0.05em;
+  }
+  .entry .code-col span{
+    writing-mode:vertical-rl;
+    text-orientation:mixed;
+    transform:rotate(180deg);
+  }
+  .entry .body-col{
+    padding:1.8rem 1.9rem;
+    border-right:1px solid var(--line);
+  }
+  .entry .stage-label{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    background:var(--amber);
+    color:#FFFFFF;
+    font-weight:700;
+    padding:0.25rem 0.6rem;
+  }
+  .entry h3{
+    font-size:1.55rem;
+    margin-top:0.5rem;
+  }
+  .entry .standalone-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.72rem;
+    color:var(--slate);
+    margin-top:0.3rem;
+  }
+  .entry .why{
+    margin-top:1rem;
+    color:var(--ink);
+    font-size:0.98rem;
+  }
+  .entry .why strong{color:var(--navy);}
+  .entry ul.value{
+    list-style:none;
+    margin:1rem 0 0;
+    padding:0;
+    display:grid;
+    gap:0.5rem;
+  }
+  .entry ul.value li{
+    font-size:0.92rem;
+    color:var(--slate);
+    padding-left:1.1rem;
+    position:relative;
+  }
+  .entry ul.value li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--teal);
+  }
+  .entry .stat-col{
+    padding:1.8rem 1.6rem;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:var(--paper-deep);
+  }
+  .entry .stats{
+    display:flex;
+    flex-direction:column;
+    gap:0.9rem;
+  }
+  .entry .stat{
+    font-family:'IBM Plex Mono', monospace;
+  }
+  .entry .stat .num{
+    font-size:1.4rem;
+    color:var(--navy);
+    font-weight:600;
+    display:block;
+  }
+  .entry .stat .lbl{
+    font-size:0.68rem;
+    color:var(--slate);
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+  }
+  .signin-btn{
+    margin-top:1.4rem;
+    display:inline-block;
+    text-align:center;
+    background:var(--amber);
+    color:#fff;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:0.75rem 1rem;
+    border:1px solid var(--amber);
+    transition:background .2s ease, color .2s ease;
+  }
+  .signin-btn:hover{
+    background:transparent;
+    color:var(--amber);
+  }
+
+  .rationale{
+    max-width:1080px;
+    padding:1rem 0 3.5rem;
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:1.4rem;
+  }
+  .rationale .col{
+    border-top:2px solid var(--navy);
+    padding-top:0.9rem;
+  }
+  .rationale .col .k{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    background:var(--amber);
+    color:#FFFFFF;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:0.25rem 0.6rem;
+  }
+  .rationale .col h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    font-size:1.15rem;
+    margin:0.4rem 0 0.5rem;
+    font-weight:600;
+  }
+  .rationale .col p{
+    color:var(--slate);
+    font-size:0.95rem;
+    margin:0;
+  }
+
+  .guide{
+    max-width:960px;
+    margin:0 0 4rem;
+    background:var(--navy);
+    color:var(--paper);
+    padding:2.2rem 2.4rem;
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:1.6rem;
+    align-items:center;
+  }
+  .guide h3{
+    color:#fff;
+    font-size:1.4rem;
+  }
+  .guide p{color:#C9D3E0; font-size:0.95rem; margin-top:0.6rem;}
+  .guide .pick{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.8rem;
+    display:flex;
+    flex-direction:column;
+    gap:0.7rem;
+  }
+  .guide .pick a{
+    color:#fff;
+    text-decoration:none;
+    border-bottom:1px solid var(--teal);
+    padding-bottom:0.2rem;
+  }
+  .guide .pick a:hover{border-color:var(--amber);}
+
+  .pricing-stack{
+    max-width:720px;
+    padding:1rem 0 3.5rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .price-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    padding:1.9rem 2rem;
+    display:flex;
+    flex-direction:column;
+    width:100%;
+  }
+  .price-card.base{border-top:4px solid var(--navy);}
+  .price-card.addon{
+    border-top:3px solid var(--amber);
+    border-style:dashed;
+    border-color:var(--amber);
+    max-width:560px;
+    padding:1.5rem 1.8rem;
+    background:var(--paper-deep);
+  }
+  .addon-connector{
+    display:flex;
+    align-items:center;
+    gap:0.7rem;
+    margin:0.9rem 0;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.76rem;
+    color:var(--slate);
+    font-weight:600;
+  }
+  .addon-connector .plus{
+    width:28px; height:28px;
+    border-radius:50%;
+    background:var(--navy);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    font-weight:700;
+  }
+  .price-card .ptag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.7rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--slate);
+    font-weight:600;
+  }
+  .addon .ptag{display:inline-block; background:var(--amber); color:#fff; padding:0.22rem 0.55rem; letter-spacing:0.06em;}
+  .price-card h3{font-size:1.35rem; margin-top:0.5rem;}
+  .price-card.addon h3{font-size:1.15rem;}
+  .price-card .amount{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:2.1rem;
+    color:var(--navy);
+    font-weight:600;
+    margin-top:0.7rem;
+  }
+  .price-card.addon .amount{font-size:1.6rem;}
+  .price-card .amount span{font-size:0.9rem; color:var(--slate); font-weight:400;}
+  .price-card ul{
+    list-style:none;
+    padding:0;
+    margin:1rem 0 1.4rem;
+    display:grid;
+    gap:0.45rem;
+  }
+  .price-card ul li{
+    font-size:0.9rem;
+    color:var(--slate);
+    padding-left:1.1rem;
+    position:relative;
+  }
+  .price-card ul li::before{content:"—"; position:absolute; left:0; color:var(--teal);}
+  .price-card ul li.included::before{content:"✓"; color:#1B6B3C; font-weight:700;}
+  .price-card .enroll-btn{
+    margin-top:auto;
+    display:inline-block;
+    text-align:center;
+    background:var(--amber);
+    color:#fff;
+    text-decoration:none;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.78rem;
+    font-weight:600;
+    letter-spacing:0.04em;
+    padding:0.75rem 1rem;
+    border:1px solid var(--amber);
+  }
+  .price-card.base .enroll-btn{background:var(--navy); border-color:var(--navy);}
+  .price-card .enroll-btn:hover{background:transparent; color:var(--amber);}
+  .price-card.base .enroll-btn:hover{color:var(--navy);}
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:2rem 6vw 2.6rem;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.74rem;
+    color:var(--slate);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:0.6rem;
+  }
+
+  @media (max-width:880px){
+    .hero-grid{grid-template-columns:1fr 1fr;}
+    .entry{grid-template-columns:1fr;}
+    .entry .code-col{
+      flex-direction:row;
+      padding:0.7rem 1.9rem;
+      justify-content:flex-start;
+    }
+    .entry .code-col span{
+      writing-mode:horizontal-tb;
+      transform:none;
+    }
+    .entry .body-col{border-right:none; border-bottom:1px solid var(--line);}
+    .doc-control{grid-template-columns:1fr 1fr;}
+    .rationale{grid-template-columns:1fr;}
+    .guide{grid-template-columns:1fr;}
+  }
+
+  @media (max-width:600px){
+    .masthead{
+      padding:1rem 5.5vw;
+      flex-direction:column;
+      align-items:flex-start;
+      gap:0.5rem;
+    }
+    .masthead-meta{display:none;}
+    .masthead-right{align-items:flex-start; width:100%;}
+    .hub-link{display:block;}
+    .cover{padding:2.2rem 5.5vw 1.8rem;}
+    .cover h1{font-size:clamp(1.7rem, 8vw, 3.4rem); line-height:1.14;}
+    .cover .lede{font-size:1rem;}
+    .hero-grid{grid-template-columns:1fr; gap:0.7rem;}
+    .doc-control{grid-template-columns:1fr; padding:0.9rem 1.1rem;}
+    section{padding:0 5.5vw;}
+    .section-head{padding:2.4rem 0 1.2rem;}
+    .flow{flex-direction:column; align-items:flex-start; gap:0.55rem;}
+    .flow .arrow{transform:rotate(90deg); margin-left:1rem;}
+    .entry .body-col, .entry .stat-col{padding:1.4rem 1.3rem;}
+    .rationale{padding-bottom:2.2rem;}
+    .guide{padding:1.7rem 1.5rem;}
+    .price-card{padding:1.4rem 1.3rem;}
+    .price-card.addon{padding:1.2rem 1.1rem;}
+    .price-card .amount{font-size:1.7rem;}
+    .price-card.addon .amount{font-size:1.35rem;}
+    .signin-btn, .enroll-btn{display:block; width:100%;}
+    footer{flex-direction:column; align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  .hrw-side{display:none;}
+  .side-panel{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-top:4px solid var(--amber);
+    padding:1.7rem 1.6rem 1.9rem;
+  }
+  .side-panel h3{
+    font-size:1.28rem;
+    line-height:1.2;
+    margin-top:0.5rem;
+  }
+  .side-panel .intro{
+    color:var(--slate);
+    font-size:0.88rem;
+    margin-top:0.8rem;
+    line-height:1.5;
+  }
+  .side-block{
+    border-top:2px solid var(--navy);
+    padding-top:0.85rem;
+    margin-top:1.5rem;
+  }
+  .side-block .k{
+    display:inline-block;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:0.64rem;
+    background:var(--amber);
+    color:#fff;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    padding:0.22rem 0.5rem;
+  }
+  .side-block h4{
+    font-family:'Fraunces', serif;
+    color:var(--navy);
+    font-size:1rem;
+    line-height:1.25;
+    margin:0.5rem 0 0.5rem;
+    font-weight:600;
+  }
+  .side-block p{
+    color:var(--slate);
+    font-size:0.85rem;
+    margin:0;
+    line-height:1.5;
+  }
+
+  @media (min-width:1240px){
+    .hero-register-wrap{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:2.6rem;
+      align-items:start;
+    }
+    .hrw-side{
+      display:block;
+    }
+  }
+
+  @media (min-width:881px){
+    .hero-flow{
+      display:grid;
+      grid-template-columns:repeat(4, 1fr);
+      max-width:none;
+    }
+    .hero-flow .stage{
+      position:relative;
+      width:100%;
+      justify-content:center;
+    }
+    .hero-flow .arrow{display:none;}
+    .hero-flow .stage:not(:last-child)::after{
+      content:"→";
+      position:absolute;
+      right:-1.05rem;
+      top:50%;
+      transform:translateY(-50%);
+      color:var(--amber);
+      font-size:1rem;
+      font-weight:700;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="brandmark">
+    <span class="name">TIB SYSTEMS LLC</span>
+    <span class="tag">SAP Security · GRC · Controls</span>
+  </div>
+  <div class="masthead-right">
+    <div class="masthead-meta">
+      TRAINING REGISTER · REV 002<br>
+      academy@tib-systems.com
+    </div>
+    <a class="hub-link" href="https://hub-my-courses.vercel.app/" style="color:var(--amber); font-weight:700; text-decoration:none; font-family:'IBM Plex Mono', monospace; font-size:0.84rem;">Already Enrolled? Access Your Courses →</a>
+  </div>
+</header>
+
+<div class="hero-register-wrap">
+<div class="hrw-main">
+
+<div class="cover">
+  <p class="eyebrow">Where to start</p>
+  <h1>Four programmes. One controls career.</h1>
+  <p class="lede">Before you sign in anywhere, read what each programme is for. They're built to be used in sequence or on their own — pick the one that matches where you are today, not where the syllabus assumes you are.</p>
+
+  <div class="roles-strip">
+    <span class="roles-label">Trains you for roles like</span>
+    <span class="role-pill">SAP GRC Consultant</span>
+    <span class="role-pill">SAP Security Consultant</span>
+    <span class="role-pill">IT / SOX Auditor</span>
+    <span class="role-pill">Access Risk Analyst</span>
+    <span class="role-pill">Compliance Analyst</span>
+    <span class="role-pill">Controls Analyst</span>
+  </div>
+
+  <div class="flow hero-flow" aria-hidden="true">
+    <div class="stage">01 · JUDGMENT</div>
+    <span class="arrow">→</span>
+    <div class="stage">02 · CAPTURE</div>
+    <span class="arrow">→</span>
+    <div class="stage">03 · EXECUTION</div>
+    <span class="arrow">→</span>
+    <div class="stage">04 · PLACEMENT</div>
+  </div>
+
+  <div class="hero-grid">
+    <a class="hero-card" href="#programmes">
+      <span class="tag">TRK·01 — No prior SAP access</span>
+      <h4>SAP Controls Analyst — No-Access Track</h4>
+      <p>Read real SAP evidence and call the exception — no login, no lab, no SAP experience needed to start.</p>
+      <span class="go">See the programme →</span>
+    </a>
+    <a class="hero-card" href="#programmes">
+      <span class="tag">TRK·02 — Evidence capture</span>
+      <h4>Evidence Capture Training</h4>
+      <p>Go inside SAP and SAP GRC yourself to produce the same 64 evidence items — the direct companion to Track 01.</p>
+      <span class="go">See the programme →</span>
+    </a>
+    <a class="hero-card" href="#programmes">
+      <span class="tag">TRK·03 — Live SAP labs</span>
+      <h4>SAP Controls Mastery — Console</h4>
+      <p>An 85-session hands-on path with live SAP labs, real client templates, case studies, and interview simulation.</p>
+      <span class="go">See the programme →</span>
+    </a>
+    <a class="hero-card" href="#programmes">
+      <span class="tag">TRK·04 — Free to browse</span>
+      <h4>TIB Training Library</h4>
+      <p>Resume models, first-60-days playbooks, and current SAP GRC job market intelligence to land the role.</p>
+      <span class="go">See the programme →</span>
+    </a>
+  </div>
+
+  <dl class="doc-control">
+    <div><dt>Register covers</dt><dd>4 active programmes</dd></div>
+    <div><dt>Entry point</dt><dd>No prior SAP access required</dd></div>
+    <div><dt>Contact</dt><dd>academy@tib-systems.com</dd></div>
+  </dl>
+</div>
+
+<section id="programmes">
+  <div class="section-head">
+    <p class="eyebrow">The register</p>
+    <h2>Four doors into SAP Controls &amp; Compliance</h2>
+    <p>Each entry below is a full standalone programme with its own sign-in. Read the background and value proposition, then use the sign-in link to reach that programme's own login screen.</p>
+  </div>
+
+  <div class="register">
+
+    <article class="entry">
+      <div class="code-col"><span>TRK · 01</span></div>
+      <div class="body-col">
+        <p class="stage-label">Stage 01 — Judgment</p>
+        <h3>SAP Controls Analyst — No-Access Track</h3>
+        <p class="standalone-note">Standalone judgment-first programme · pairs with Evidence Capture Training</p>
+        <p class="why"><strong>Why it exists:</strong> Most people who land their first SAP controls or audit role don't get production system access on day one. They're handed screenshots, evidence packs, and a request to form an opinion — SUIM logs, PFCG role exports, segregation-of-duties conflicts, Fiori catalog extracts — and they're expected to reason correctly without ever touching a keyboard inside SAP. This track trains exactly that skill, using the same kind of captured evidence a real analyst reviews, across fifteen chapters and sixty-four scored competency checks.</p>
+        <ul class="value">
+          <li>Builds the reviewer's eye before the operator's hands — the order most controls careers actually happen in</li>
+          <li>Works from real evidence artifacts, not simulated screens, so the judgment transfers directly to a live engagement</li>
+          <li>No SAP login, licence, or lab access needed to begin</li>
+        </ul>
+      </div>
+      <div class="stat-col">
+        <div class="stats">
+          <div class="stat"><span class="num">15</span><span class="lbl">Chapters</span></div>
+          <div class="stat"><span class="num">64</span><span class="lbl">Competency checks</span></div>
+        </div>
+        <a class="signin-btn" href="no-access-track.html">View full programme details →</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="code-col"><span>TRK · 02</span></div>
+      <div class="body-col">
+        <p class="stage-label">Stage 02 — Capture</p>
+        <h3>SAP Controls Consultant — Hands-On Course</h3>
+        <p class="standalone-note">Evidence Capture Training · direct one-to-one companion to No-Access Track</p>
+        <p class="why"><strong>Why it exists:</strong> No-Access Track teaches you to recognize a control exception when you're handed the evidence. It doesn't teach you where that evidence actually comes from. This course closes that gap — the same fifteen domains and sixty-four items from No-Access Track, but now you're the one navigating SAP and SAP GRC to produce them yourself: finding the right screen, running the report, and either exporting a real file or knowing when the screenshot itself is the complete evidence.</p>
+        <ul class="value">
+          <li>Direct one-to-one match to No-Access Track — same 15 domains, same 64 items, this time you produce them</li>
+          <li>Teaches the real distinction between evidence you export as a file and evidence that's only ever a screenshot — most training glosses over this</li>
+          <li>Comes with a full step-by-step navigation guide, not just a task list</li>
+        </ul>
+      </div>
+      <div class="stat-col">
+        <div class="stats">
+          <div class="stat"><span class="num">64</span><span class="lbl">Items matched to No-Access Track</span></div>
+          <div class="stat"><span class="num">15</span><span class="lbl">SAP &amp; GRC domains</span></div>
+        </div>
+        <a class="signin-btn" href="evidence-capture-training.html">View full programme details →</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="code-col"><span>TRK · 03</span></div>
+      <div class="body-col">
+        <p class="stage-label">Stage 03 — Execution</p>
+        <h3>SAP Controls Mastery — Console</h3>
+        <p class="standalone-note">Standalone self-study programme · independent enrolment</p>
+        <p class="why"><strong>Why it exists:</strong> Judgment tells you what's wrong. This programme trains you to fix it, document it, and defend it — inside a real SAP environment. It's an 85-session talent development path built around live SAP labs, the actual templates auditors and consultants use on engagements, real case studies, and interview simulation, so the skill you build is the skill a hiring manager is actually testing for. A 74-session Fast Track is available for trainees who want to move through the same curriculum at a tighter pace.</p>
+        <ul class="value">
+          <li>Live, hands-on SAP labs — configuration and remediation, not just reading</li>
+          <li>The same templates and case study format used on real client engagements</li>
+          <li>Ends in interview simulation, so readiness is tested, not assumed</li>
+          <li>Choose Standard (85 sessions) or Fast Track (74 sessions) — same curriculum, your pace</li>
+        </ul>
+      </div>
+      <div class="stat-col">
+        <div class="stats">
+          <div class="stat"><span class="num">85</span><span class="lbl">Session programme</span></div>
+          <div class="stat"><span class="num">74</span><span class="lbl">Fast Track option</span></div>
+        </div>
+        <a class="signin-btn" href="mastery-console.html">View full programme details →</a>
+      </div>
+    </article>
+
+    <article class="entry">
+      <div class="code-col"><span>TRK · 04</span></div>
+      <div class="body-col">
+        <p class="stage-label">Stage 04 — Placement</p>
+        <h3>TIB Training Library</h3>
+        <p class="standalone-note">Career Prep Training Library · open reference access</p>
+        <p class="why"><strong>Why it exists:</strong> Technical readiness doesn't get you hired on its own — it has to reach a hiring manager in a resume that reads right, survive an interview under real questioning, and be pitched into a job market you actually understand. The Training Library is where the first three programmes turn into a job search: resume models, first-sixty-days playbooks, deep-dive interview prep, and current job market intelligence for SAP controls, security, and GRC roles.</p>
+        <ul class="value">
+          <li>Career documents built from real SAP GRC hiring patterns, not generic templates</li>
+          <li>Free to browse — the widest door of the four, useful at any stage</li>
+          <li>The place all three other programmes point back to once the technical work is done</li>
+        </ul>
+      </div>
+      <div class="stat-col">
+        <div class="stats">
+          <div class="stat"><span class="num">Open</span><span class="lbl">Free account</span></div>
+          <div class="stat"><span class="num">Career</span><span class="lbl">Intelligence library</span></div>
+        </div>
+        <a class="signin-btn" href="training-library.html">View full programme details →</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+</div>
+
+<aside class="hrw-side">
+  <div class="side-panel">
+    <p class="eyebrow">Why four, not one</p>
+    <h3>Each programme teaches a different half of the job</h3>
+    <p class="intro">One course can't train judgment, evidence production, execution, and job placement equally well without going shallow on all four. So the register is split on purpose — each programme is deep in exactly one thing.</p>
+
+    <div class="side-block">
+      <span class="k">The problem with one course</span>
+      <h4>Controls work is four different skills wearing one job title</h4>
+      <p>Reading evidence and forming a judgment is a different muscle from producing that evidence yourself, which is different again from configuring a fix in SAP, which is different again from getting a recruiter to say yes. Most training compresses all of this into one syllabus and trains none of it well.</p>
+    </div>
+
+    <div class="side-block">
+      <span class="k">The register's answer</span>
+      <h4>Depth over breadth, at every stage</h4>
+      <p>No-Access Track goes deep on judgment. Evidence Capture Training goes deep on producing that evidence inside SAP. Mastery Console goes deep on execution with live labs. The Training Library goes deep on placement with career intelligence built for SAP GRC roles.</p>
+    </div>
+
+    <div class="side-block">
+      <span class="k">What this means for you</span>
+      <h4>Start where you are, not where a syllabus assumes</h4>
+      <p>Already comfortable reading evidence? Start at Evidence Capture Training. Already know SAP navigation? Skip to Mastery. Already have SAP hands-on experience? Skip straight to the Training Library. The sequence is a recommendation, not a gate.</p>
+    </div>
+  </div>
+</aside>
+
+</div>
+
+<section id="why">
+  <div class="guide">
+    <div>
+      <h3>Not sure which door to use first?</h3>
+      <p>If you've never reviewed a controls issue before, start with the No-Access Track. If you can judge evidence but have never navigated SAP to produce it, go to Evidence Capture Training. If you can already produce and evaluate evidence but haven't configured a fix, go to Mastery. If you're technically ready and job-hunting now, the Training Library is built for you.</p>
+    </div>
+    <div class="pick">
+      <a href="no-access-track.html">New to controls review → No-Access Track</a>
+      <a href="evidence-capture-training.html">Ready to learn hands-on evidence capture → Evidence Capture Training</a>
+      <a href="mastery-console.html">Ready to configure in SAP → Mastery Console</a>
+      <a href="training-library.html">Ready to interview → Training Library</a>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="section-head">
+    <p class="eyebrow">Programme investment</p>
+    <h2>One base programme, one optional add-on</h2>
+    <p>Every trainee starts with the self-paced bundle below — that now includes Evidence Capture Training at no extra charge, since it's the other half of Stage 1, not a separate skill tier. If you'd rather not go it entirely alone, add weekly live-instructor sessions on top: work through the self-paced material and lab exercises during the week, then join a 4-hour Saturday session for open Q&amp;A and live demos of any SAP or controls process.</p>
+  </div>
+
+  <div class="pricing-stack">
+    <div class="price-card base">
+      <p class="ptag">Base programme · TRK 01 + TRK 02 + TRK 03</p>
+      <h3>Self-Paced Bundle — No-Access Track + Evidence Capture Training + Mastery Console</h3>
+      <p class="amount">$599 <span>one-time, all three courses</span></p>
+      <ul>
+        <li>No-Access Track — judgment-first, 15 chapters, 64 competency checks</li>
+        <li class="included">Evidence Capture Training — included free, direct companion to No-Access Track</li>
+        <li>Mastery Console — 85-session Standard or 74-session Fast Track</li>
+        <li>Live SAP Server access included for hands-on labs</li>
+        <li>Study at your own pace, no fixed schedule</li>
+      </ul>
+      <a class="enroll-btn" href="#" data-checkout="PLACEHOLDER-CHECKOUT-A">Enroll — Self-Paced Bundle →</a>
+    </div>
+
+    <div class="addon-connector"><span class="plus">+</span> optional add-on, on top of the bundle above</div>
+
+    <div class="price-card addon">
+      <p class="ptag">Add-on · Live instructor sessions</p>
+      <h3>Weekly Live Sessions (Saturdays)</h3>
+      <p class="amount">$600 <span>add-on, 12 weeks of Saturday sessions</span></p>
+      <ul>
+        <li>Not a separate course — a companion to the self-paced bundle above</li>
+        <li>3 months (12 weeks), 4 hours every Saturday with a live instructor</li>
+        <li>Bring questions from the week's self-paced study and lab practice for open Q&amp;A</li>
+        <li>Instructor demos any SAP or controls process the group wants to see live</li>
+        <li>Built for trainees who can't attend daily classes — study during the week, get live support on the weekend</li>
+        <li>Includes TIB Training Library — job placement assistance</li>
+      </ul>
+      <a class="enroll-btn" href="#" data-checkout="PLACEHOLDER-CHECKOUT-B">Add Weekly Live Sessions →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 TIB Systems LLC — Atlanta · Hyderabad · RAK</span>
+  <span>Self-paced bundle required · live sessions available as an add-on · academy@tib-systems.com</span>
+</footer>
+
+</body>
+</html>
